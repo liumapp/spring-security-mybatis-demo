@@ -1,5 +1,9 @@
 package com.liumapp.demo.security.controller;
 
+import com.liumapp.demo.security.domain.User;
+import com.liumapp.demo.security.mapper.UserMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,6 +16,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user")
 public class UserController {
 
+    @Autowired
+    private UserMapper userMapper;
 
+    @RequestMapping("/")
+    public String index () {
+        return "hello , this is " + this.getClass().getSimpleName();
+    }
+
+    @RequestMapping("/add")
+    public String add (@RequestBody User user) {
+        userMapper.insert(user);
+        return "success";
+    }
 
 }

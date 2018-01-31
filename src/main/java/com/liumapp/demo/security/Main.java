@@ -1,5 +1,6 @@
 package com.liumapp.demo.security;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -9,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * home-page:http://www.liumapp.com
  */
 @SpringBootApplication(scanBasePackages = {"com.liumapp.demo.security"})
+@MapperScan("com.liumapp.demo.security.mapper")
 public class Main {
 
     public static void main(String[] args) {

@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * E-mail:liumapp.com@gmail.com
  * home-page:http://www.liumapp.com
  */
-@SpringBootApplication(scanBasePackages = {"com.liumapp"})
+@SpringBootApplication(scanBasePackages = {"com.liumapp.demo.security"})
 public class Main {
 
     public static void main(String[] args) {

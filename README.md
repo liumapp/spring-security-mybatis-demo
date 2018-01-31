@@ -1,2 +1,2 @@
-# spring-data-jpa-demo
-A simple demo for Spring Data Jpa .
+# spring-security-mybatis-demo
+A simple demo for Spring Security with Mybatis .

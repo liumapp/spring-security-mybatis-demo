@@ -1,6 +1,7 @@
 package com.liumapp.demo.security.controller;
 
 import com.liumapp.demo.security.auth.request.JwtAuthenticationRequest;
+import com.liumapp.demo.security.auth.response.JwtAuthenticationResponse;
 import com.liumapp.demo.security.auth.service.MultyUserDetailsService;
 import com.liumapp.demo.security.auth.user.JwtUser;
 import com.liumapp.demo.security.auth.util.JwtTokenUtil;
@@ -14,7 +15,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -44,7 +44,7 @@ public class AuthenticationController {
     private MultyUserDetailsService userDetailsService;
 
     @RequestMapping(value = "${jwt.route.authentication.path}/company", method = RequestMethod.POST)
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest, Device device) throws AuthenticationException {
+    public ResponseEntity<?> createCompanyAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest, Device device) throws AuthenticationException {
 
         // Perform the security
         final Authentication authentication = authenticationManager.authenticate(
@@ -65,7 +65,7 @@ public class AuthenticationController {
     }
 
     @RequestMapping(value = "${jwt.route.authentication.path}/person", method = RequestMethod.POST)
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest, Device device) throws AuthenticationException {
+    public ResponseEntity<?> createPersonalAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest, Device device) throws AuthenticationException {
 
         // Perform the security
         final Authentication authentication = authenticationManager.authenticate(

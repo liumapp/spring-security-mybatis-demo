@@ -115,7 +115,7 @@ public class JwtTokenUtil implements Serializable {
                 .compact();
     }
 
-    public Boolean canTokenBeRefreshed(String token, Date lastPasswordReset) {
+    public Boolean canTokenBeRefreshed(String token) {
         final Date created = getIssuedAtDateFromToken(token);
         return !isTokenExpired(token) || ignoreTokenExpiration(token);
     }

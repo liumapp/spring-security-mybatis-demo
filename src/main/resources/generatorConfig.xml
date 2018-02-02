@@ -52,19 +52,5 @@
                enableSelectByExample="true"
                selectByExampleQueryId="true"
         ></table>
-        <table tableName="access" domainObjectName="Access"
-               enableCountByExample="true"
-               enableUpdateByExample="true"
-               enableDeleteByExample="true"
-               enableSelectByExample="true"
-               selectByExampleQueryId="true"
-        ></table>
-        <table tableName="role_access" domainObjectName="RoleAccess"
-               enableCountByExample="true"
-               enableUpdateByExample="true"
-               enableDeleteByExample="true"
-               enableSelectByExample="true"
-               selectByExampleQueryId="true"
-        ></table>
     </context>
 </generatorConfiguration>

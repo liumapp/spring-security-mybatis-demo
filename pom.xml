@@ -77,6 +77,6 @@
   </build>
 
   <modules>
-    <module>jwt-spring-security-demo</module>
+    <!--<module>jwt-spring-security-demo</module>-->
   </modules>
 </project>

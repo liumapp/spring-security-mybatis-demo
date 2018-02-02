@@ -1,5 +1,6 @@
 package com.liumapp.demo.security.config;
 
+import com.liumapp.demo.security.auth.JwtAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +21,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
  * E-mail:liumapp.com@gmail.com
  * home-page:http://www.liumapp.com
  */
+@SuppressWarnings("SpringJavaAutowiringInspection")
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)

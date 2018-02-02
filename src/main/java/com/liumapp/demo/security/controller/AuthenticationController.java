@@ -64,7 +64,7 @@ public class AuthenticationController {
         return ResponseEntity.ok(new JwtAuthenticationResponse(token));
     }
 
-    @RequestMapping(value = "${jwt.route.authentication.path}/person", method = RequestMethod.POST)
+    @RequestMapping(value = "${jwt.route.authentication.path}/personal", method = RequestMethod.POST)
     public ResponseEntity<?> createPersonalAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest, Device device) throws AuthenticationException {
 
         // Perform the security
@@ -85,12 +85,27 @@ public class AuthenticationController {
         return ResponseEntity.ok(new JwtAuthenticationResponse(token));
     }
 
-    @RequestMapping(value = "${jwt.route.authentication.refresh}", method = RequestMethod.GET)
-    public ResponseEntity<?> refreshAndGetAuthenticationToken(HttpServletRequest request) {
+    @RequestMapping(value = "${jwt.route.authentication.refresh}/company", method = RequestMethod.GET)
+    public ResponseEntity<?> refreshAndGetCompanyAuthenticationToken(HttpServletRequest request) {
         String authToken = request.getHeader(tokenHeader);
         final String token = authToken.substring(7);
-        String username = jwtTokenUtil.getUsernameFromToken(token);
-        JwtUser user = (JwtUser) userDetailsService.loadUserByUsername(username);
+        String email = jwtTokenUtil.getUsernameFromToken(token);
+        JwtUser user = (JwtUser) userDetailsService.loadUserByEmail(email);
+
+        if (jwtTokenUtil.canTokenBeRefreshed(token)) {
+            String refreshedToken = jwtTokenUtil.refreshToken(token);
+            return ResponseEntity.ok(new JwtAuthenticationResponse(refreshedToken));
+        } else {
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
+    @RequestMapping(value = "${jwt.route.authentication.refresh}/personal", method = RequestMethod.GET)
+    public ResponseEntity<?> refreshAndGetPersonalAuthenticationToken(HttpServletRequest request) {
+        String authToken = request.getHeader(tokenHeader);
+        final String token = authToken.substring(7);
+        String phone = jwtTokenUtil.getPhoneFromToken(token);
+        JwtUser user = (JwtUser) userDetailsService.loadUserByUsername(phone);
 
         if (jwtTokenUtil.canTokenBeRefreshed(token)) {
             String refreshedToken = jwtTokenUtil.refreshToken(token);

@@ -4,6 +4,7 @@ import com.liumapp.demo.security.domain.User;
 import com.liumapp.demo.security.domain.UserExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 public interface UserMapper {
     long countByExample(UserExample example);

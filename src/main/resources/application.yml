@@ -7,14 +7,14 @@ spring:
   jackson:
     serialization:
       INDENT_OUTPUT: true
-    datasource:
-        name: spring_security
-        url: jdbc:mysql://localhost:3306/spring_security?useUnicode=true&characterEncoding=utf8
-        username: root
-        password: adminadmin
-        # 使用druid数据源
-        type: com.alibaba.druid.pool.DruidDataSource
-        driver-class-name: com.mysql.jdbc.Driver
+  datasource:
+      name: spring_security
+      url: jdbc:mysql://localhost:3306/spring_security?useUnicode=true&characterEncoding=utf8
+      username: root
+      password: adminadmin
+      # 使用druid数据源
+      type: com.alibaba.druid.pool.DruidDataSource
+      driver-class-name: com.mysql.jdbc.Driver
 
 jwt:
   header: Authorization

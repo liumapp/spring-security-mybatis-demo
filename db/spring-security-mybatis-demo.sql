@@ -77,13 +77,19 @@ ENGINE = InnoDB;
 
 BEGIN;
 INSERT INTO `spring_security`.`user_role` VALUES
-(1 , 1 , 2),
-(2 , 2 , 3),
-(3 , 3 , 4),
-(4 , 4 , 4),
-(5 , 5 , 1);
+(1 , 1 , 1),
+(2 , 1 , 2),
+(3 , 1 , 3),
+(4 , 1 , 4),
+(5 , 2 , 3),
+(6 , 2 , 4),
+(7 , 2 , 1),
+(8 , 3 , 1),
+(9 , 3 , 4),
+(10, 4 , 1),
+(11, 4 , 4),
+(12, 5 , 1);
 COMMIT;
-
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

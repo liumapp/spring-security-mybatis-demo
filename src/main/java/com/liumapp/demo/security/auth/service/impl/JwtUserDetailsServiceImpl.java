@@ -24,7 +24,6 @@ import java.util.List;
 @Service
 public class JwtUserDetailsServiceImpl implements MultyUserDetailsService {
 
-
     @Autowired
     private UserMapper userMapper;
 

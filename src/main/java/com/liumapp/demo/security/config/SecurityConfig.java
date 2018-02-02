@@ -1,6 +1,7 @@
 package com.liumapp.demo.security.config;
 
 import com.liumapp.demo.security.auth.JwtAuthenticationEntryPoint;
+import com.liumapp.demo.security.auth.filter.JwtAuthenticationTokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

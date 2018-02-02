@@ -1,5 +1,6 @@
 package com.liumapp.demo.security.auth.filter;
 
+import com.liumapp.demo.security.auth.util.JwtTokenUtil;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

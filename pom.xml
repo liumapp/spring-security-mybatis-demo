@@ -15,6 +15,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java.version>1.8</java.version>
     <springboot.version>1.5.6.RELEASE</springboot.version>
     <jjwt.version>0.7.0</jjwt.version>
   </properties>
@@ -26,6 +27,10 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-mobile</artifactId>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>

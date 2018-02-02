@@ -16,6 +16,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <springboot.version>1.5.6.RELEASE</springboot.version>
+    <jjwt.version>0.7.0</jjwt.version>
   </properties>
 
   <name>spring-security-mybatis-demo</name>
@@ -34,6 +35,11 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.jsonwebtoken</groupId>
+      <artifactId>jjwt</artifactId>
+      <version>${jjwt.version}</version>
     </dependency>
     <dependency>
       <groupId>org.mybatis.spring.boot</groupId>
@@ -77,6 +83,6 @@
   </build>
 
   <modules>
-    <!--<module>jwt-spring-security-demo</module>-->
+    <module>jwt-spring-security-demo</module>
   </modules>
 </project>

@@ -1,6 +1,7 @@
 package com.liumapp.demo.security.controller;
 
 import com.liumapp.demo.security.auth.request.JwtAuthenticationRequest;
+import com.liumapp.demo.security.auth.service.MultyUserDetailsService;
 import com.liumapp.demo.security.auth.user.JwtUser;
 import com.liumapp.demo.security.auth.util.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +41,7 @@ public class AuthenticationController {
     private JwtTokenUtil jwtTokenUtil;
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    private MultyUserDetailsService userDetailsService;
 
     @RequestMapping(value = "${jwt.route.authentication.path}/company", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest, Device device) throws AuthenticationException {
@@ -56,7 +57,7 @@ public class AuthenticationController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         // Reload password post-security so we can generate token
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getEmail());
+        final UserDetails userDetails = userDetailsService.loadUserByEmail(authenticationRequest.getEmail());
         final String token = jwtTokenUtil.generateToken(userDetails, device);
 
         // Return the token

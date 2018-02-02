@@ -15,6 +15,10 @@ public class User {
 
     private Byte isenabled;
 
+    /**
+     * 1: 个人
+     * 2: 企业
+     */
     private Byte type;
 
     private Date creatat;

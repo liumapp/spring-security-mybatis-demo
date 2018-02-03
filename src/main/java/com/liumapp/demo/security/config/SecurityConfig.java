@@ -3,6 +3,9 @@ package com.liumapp.demo.security.config;
 import com.liumapp.demo.security.auth.JwtAuthenticationEntryPoint;
 import com.liumapp.demo.security.auth.filter.JwtAuthenticationTokenFilter;
 import com.liumapp.demo.security.auth.service.MultyUserDetailsService;
+import com.liumapp.demo.security.auth.user.JwtUserFactory;
+import com.liumapp.demo.security.mapper.RoleMapper;
+import com.liumapp.demo.security.mapper.UserRoleMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -33,6 +36,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private MultyUserDetailsService userDetailsService;
+
+    @Autowired
+    private UserRoleMapper userRoleMapper;
+
+    @Autowired
+    private RoleMapper roleMapper;
 
     @Autowired
     public void configureAuthentication(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
@@ -87,6 +96,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .headers()
                 .frameOptions().sameOrigin()  // required to set for H2 else H2 Console will be blank.
                 .cacheControl();
+
+        // built jwt user factory
+        JwtUserFactory jwtUserFactory = JwtUserFactory.getInstance();
+        jwtUserFactory.setRoleMapper(roleMapper);
+        jwtUserFactory.setUserRoleMapper(userRoleMapper);
     }
+
+
 
 }

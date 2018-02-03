@@ -19,18 +19,15 @@ import java.util.stream.Collectors;
  */
 public final class JwtUserFactory {
 
-    @Autowired
     private UserRoleMapper userRoleMapper;
 
-    @Autowired
     private RoleMapper roleMapper;
 
     private static JwtUserFactory instance;
 
-    private static synchronized JwtUserFactory getInstance () {
+    public static synchronized JwtUserFactory getInstance () {
         if (instance == null) {
             instance = new JwtUserFactory();
-//            instance.roleMapper =
         }
         return instance;
     }
@@ -90,4 +87,11 @@ public final class JwtUserFactory {
         return isenabled == 1 ;
     }
 
+    public void setUserRoleMapper(UserRoleMapper userRoleMapper) {
+        this.userRoleMapper = userRoleMapper;
+    }
+
+    public void setRoleMapper(RoleMapper roleMapper) {
+        this.roleMapper = roleMapper;
+    }
 }

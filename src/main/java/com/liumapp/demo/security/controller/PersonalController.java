@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("personal")
 public class PersonalController {
 
+    @RequestMapping("/")
     @PreAuthorize("hasRole('PERSONAL')")
     public ResponseEntity<?> getPersonalGreeting () {
         return ResponseEntity.ok("Greeting from personal");

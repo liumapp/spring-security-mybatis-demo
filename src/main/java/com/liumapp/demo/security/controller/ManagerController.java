@@ -11,9 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
  * home-page:http://www.liumapp.com
  */
 @RestController
-@RequestMapping("employee")
+@RequestMapping("manager")
 public class ManagerController {
 
+    @RequestMapping("/")
     @PreAuthorize("hasRole('MANAGER')")
     public ResponseEntity<?> getManagerGreeting () {
         return ResponseEntity.ok("Greeting from manager");

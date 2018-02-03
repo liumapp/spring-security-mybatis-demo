@@ -76,14 +76,20 @@ public class AuthenticationController {
 
     @RequestMapping(value = "${jwt.route.authentication.path}/personal", method = RequestMethod.POST)
     public ResponseEntity<?> createPersonalAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest, Device device) throws AuthenticationException {
-
+        authenticationRequest.setUsername(authenticationRequest.getEmail());
         // Perform the security
-        final Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        authenticationRequest.getPhone(),
-                        authenticationRequest.getPassword()
-                )
-        );
+        Authentication authentication = null;
+
+        try {
+            authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            authenticationRequest.getUsername(),
+                            authenticationRequest.getPassword()
+                    )
+            );
+        } catch (AuthenticationException e) {
+            System.out.println(e.getMessage());
+        }
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 

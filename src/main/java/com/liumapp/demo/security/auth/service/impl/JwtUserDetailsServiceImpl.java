@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * Created by liumapp on 2/2/18.
@@ -35,33 +36,38 @@ public class JwtUserDetailsServiceImpl implements MultyUserDetailsService {
      */
     @Override
     public UserDetails loadUserByUsername (String username) throws UsernameNotFoundException {
-
-        UserDetails userDetails = this.loadUserByEmail(username);
-        if (userDetails == null) {
-            userDetails = this.loadUserByPhone(username);
-        }
-        if (userDetails == null) {
-            throw new UsernameNotFoundException("username " + username + " not found");
+        UserDetails userDetails = null;
+        try {
+            userDetails = this.loadUserByEmail(username);
+        } catch (UsernameNotFoundException e1) {
+            try {
+                userDetails = this.loadUserByPhone(username);
+            } catch (UsernameNotFoundException e2) {
+                throw e2;
+            }
         }
 
         return userDetails;
     }
 
     @Override
-    public UserDetails loadUserByEmail (String email) {
+    public UserDetails loadUserByEmail (String email) throws UsernameNotFoundException {
         UserExample userExample = new UserExample();
         userExample.createCriteria()
                 .andEmailEqualTo(email);
 
         List<User> tmp =  userMapper.selectByExample(userExample);
         LinkedList<User> users = new LinkedList<User>(tmp);
-        User user = users.pop();
 
-        if (user == null) {
-            return null;
-        } else {
-            return JwtUserFactory.create(user);
+        User user = null;
+        try {
+            user = users.pop();
+        } catch (NoSuchElementException e) {
+            throw new UsernameNotFoundException("not found user by email : " + email);
         }
+
+        return JwtUserFactory.create(user);
+
     }
 
     @Override
@@ -73,13 +79,14 @@ public class JwtUserDetailsServiceImpl implements MultyUserDetailsService {
         List<User> tmp = userMapper.selectByExample(userExample);
         LinkedList<User> users = new LinkedList<User>(tmp);
 
-        User user = users.pop();
-
-        if (user == null) {
-            return null;
-        } else {
-            return JwtUserFactory.create(user);
+        User user = null;
+        try {
+            user = users.pop();
+        } catch (NoSuchElementException e) {
+            throw new UsernameNotFoundException("not found user by phone " + phone);
         }
+
+        return JwtUserFactory.create(user);
     }
 
 }

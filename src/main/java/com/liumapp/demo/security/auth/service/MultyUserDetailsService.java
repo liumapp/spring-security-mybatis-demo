@@ -12,8 +12,8 @@ import org.springframework.stereotype.Service;
  */
 public interface MultyUserDetailsService extends UserDetailsService {
 
-    UserDetails loadUserByEmail(String var1) ;
+    UserDetails loadUserByEmail(String var1) throws UsernameNotFoundException;
 
-    UserDetails loadUserByPhone(String var1) ;
+    UserDetails loadUserByPhone(String var1) throws UsernameNotFoundException;
 
 }

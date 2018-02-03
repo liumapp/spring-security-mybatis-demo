@@ -39,7 +39,7 @@ public final class JwtUserFactory {
         return new JwtUser(
                 user.getId(),
                 user.getName(),
-                null,
+                JwtUserFactory.getInstance().decideUsername(user),
                 user.getEmail(),
                 user.getPhone(),
                 user.getPassword(),
@@ -85,6 +85,17 @@ public final class JwtUserFactory {
 
     private boolean convert (byte isenabled) {
         return isenabled == 1 ;
+    }
+
+    private String decideUsername (User user) {
+        switch (user.getType()) {
+            case 1 :
+                return user.getPhone();
+            case 2 :
+                return user.getEmail();
+            default:
+                return null;
+        }
     }
 
     public void setUserRoleMapper(UserRoleMapper userRoleMapper) {

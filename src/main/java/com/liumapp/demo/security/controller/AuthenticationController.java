@@ -42,16 +42,27 @@ public class AuthenticationController {
     @Autowired
     private MultyUserDetailsService userDetailsService;
 
+    @RequestMapping("${jwt.route.authentication.path}/hello")
+    public ResponseEntity<?> hello (@RequestBody JwtAuthenticationRequest authenticationRequest , Device device) {
+        return ResponseEntity.ok("hello");
+    }
+
     @RequestMapping(value = "${jwt.route.authentication.path}/company", method = RequestMethod.POST)
     public ResponseEntity<?> createCompanyAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest, Device device) throws AuthenticationException {
-
+        authenticationRequest.setUsername(authenticationRequest.getEmail());
         // Perform the security
-        final Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        authenticationRequest.getEmail(),
-                        authenticationRequest.getPassword()
-                )
-        );
+        Authentication authentication = null;
+
+        try {
+            authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            authenticationRequest.getUsername(),
+                            authenticationRequest.getPassword()
+                    )
+            );
+        } catch (AuthenticationException e) {
+            System.out.println(e.getMessage());
+        }
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 

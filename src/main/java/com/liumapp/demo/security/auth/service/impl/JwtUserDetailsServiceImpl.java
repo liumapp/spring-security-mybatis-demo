@@ -53,7 +53,8 @@ public class JwtUserDetailsServiceImpl implements MultyUserDetailsService {
         userExample.createCriteria()
                 .andEmailEqualTo(email);
 
-        LinkedList<User> users = (LinkedList<User>) userMapper.selectByExample(userExample);
+        List<User> tmp =  userMapper.selectByExample(userExample);
+        LinkedList<User> users = new LinkedList<User>(tmp);
         User user = users.pop();
 
         if (user == null) {
@@ -69,7 +70,9 @@ public class JwtUserDetailsServiceImpl implements MultyUserDetailsService {
         userExample.createCriteria()
                 .andPhoneEqualTo(phone);
 
-        LinkedList<User> users = (LinkedList<User>) userMapper.selectByExample(userExample);
+        List<User> tmp = userMapper.selectByExample(userExample);
+        LinkedList<User> users = new LinkedList<User>(tmp);
+
         User user = users.pop();
 
         if (user == null) {

@@ -6,6 +6,7 @@ import com.liumapp.demo.security.mapper.UserRoleMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.stereotype.Component;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -29,6 +30,7 @@ public final class JwtUserFactory {
     private static synchronized JwtUserFactory getInstance () {
         if (instance == null) {
             instance = new JwtUserFactory();
+//            instance.roleMapper =
         }
         return instance;
     }
@@ -60,9 +62,10 @@ public final class JwtUserFactory {
         UserRoleExample userRoleExample = new UserRoleExample();
         userRoleExample.createCriteria().andUseridEqualTo(user.getId());
 
-        LinkedList<UserRole> userRoles = (LinkedList<UserRole>) userRoleMapper.selectByExample(userRoleExample);
-        List<Role> roles = getRoles();
+        List<UserRole> tmp = userRoleMapper.selectByExample(userRoleExample);
+        LinkedList<UserRole> userRoles = new LinkedList<UserRole>(tmp);
 
+        List<Role> roles = getRoles();
         List<Role> result = new LinkedList<Role>();
 
         while (userRoles.size() > 0) {

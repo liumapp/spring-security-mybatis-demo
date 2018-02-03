@@ -50,8 +50,10 @@ or a manager :
 ![manager_login](https://github.com/liumapp/spring-security-mybatis-demo/blob/master/pic/manager_login.jpg)
 
 #### use
+
+First of all , you need set Authorization in request header , which's value is  : "Bearer " + ${token} . (plz pay attention to the blank space)
  
-Using is very simple .
+Now it is very simple to use .
   
 * A boss role account can get the boss greeting by : 
   

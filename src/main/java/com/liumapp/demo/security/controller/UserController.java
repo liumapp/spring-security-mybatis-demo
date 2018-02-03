@@ -16,7 +16,7 @@ import java.util.List;
  * home-page:http://www.liumapp.com
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping("user")
 public class UserController {
 
     @Autowired
@@ -24,7 +24,7 @@ public class UserController {
 
 
     @RequestMapping("/")
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasRole('PERSONAL')")
     public String getUserGreeting () {
         return "hello , this is " + this.getClass().getSimpleName();
     }

@@ -5,6 +5,8 @@ A simple demo for Spring Security with Mybatis .
 
 ## how to use 
 
+First off all , plz start the project . 
+
 We view users are personal user and company user .
 
 ### personal user

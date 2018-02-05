@@ -3,6 +3,8 @@ A simple demo for Spring Security with Mybatis .
 
 ![er-map](https://github.com/liumapp/spring-security-mybatis-demo/blob/master/pic/er.jpg)
 
+(中文文档)[http://www.liumapp.com/articles/2018/02/03/1517659378683.html]
+
 ## how to use 
 
 First off all , plz start the project . 

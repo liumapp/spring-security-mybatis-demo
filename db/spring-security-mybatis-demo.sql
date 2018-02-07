@@ -38,10 +38,10 @@ ENGINE = InnoDB;
 BEGIN;
 INSERT INTO `spring_security`.`user` VALUES
 (1 , 'boss' , 'boss@gmail.com' , '123' , '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC' , 1 , 2 , DATE(NOW())),
-(2 , 'manager' , 'manager@gmail.com' , '123123' , '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC' , 1 , 2 , DATE(NOW())),
-(3 , 'employee' , 'employee@gmail.com' , '123123123' , '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC' , 1 , 2 , DATE(NOW())),
-(4 , 'disemployee' , 'disemployee@gmail.com' , '123123123123' , '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC' , 0 , 2 , DATE(NOW())),
-(5 , 'personal' , 'personal@gmail.com' , '123123123123123' , '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC' , 1 , 1 , DATE(NOW()));
+(2 , 'manager' , 'manager@gmail.com' , '1234' , '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC' , 1 , 2 , DATE(NOW())),
+(3 , 'employee' , 'employee@gmail.com' , '12345' , '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC' , 1 , 2 , DATE(NOW())),
+(4 , 'disemployee' , 'disemployee@gmail.com' , '123456' , '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC' , 0 , 2 , DATE(NOW())),
+(5 , 'personal' , 'personal@gmail.com' , '123123123' , '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC' , 1 , 1 , DATE(NOW()));
 COMMIT;
 
 -- -----------------------------------------------------

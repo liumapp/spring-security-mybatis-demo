@@ -45,7 +45,6 @@ public class JwtTokenUtil implements Serializable {
     private Long expiration;
 
     /**
-     * plz don't use it
      * @param token
      * @return claim
      */

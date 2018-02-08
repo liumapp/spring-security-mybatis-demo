@@ -76,7 +76,7 @@ public class AuthenticationController {
 
     @RequestMapping(value = "${jwt.route.authentication.path}/personal", method = RequestMethod.POST)
     public ResponseEntity<?> createPersonalAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest, Device device) throws AuthenticationException {
-        authenticationRequest.setUsername(authenticationRequest.getEmail());
+        authenticationRequest.setUsername(authenticationRequest.getPhone());
         // Perform the security
         Authentication authentication = null;
 

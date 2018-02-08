@@ -62,6 +62,19 @@
     </dependency>
   </dependencies>
 
+  <developers>
+    <developer>
+      <name>liumapp</name>
+      <url>http://www.liumapp.com</url>
+      <email>liumapp.com@gmail.com</email>
+    </developer>
+    <developer>
+      <name>suyu</name>
+      <url>http://blog.csdn.net/qq_38082304</url>
+      <email>1132263176@qq.com</email>
+    </developer>
+  </developers>
+
   <build>
     <plugins>
       <plugin>
